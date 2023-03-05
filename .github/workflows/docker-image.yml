@@ -19,6 +19,8 @@ jobs:
         cd frontend
         docker image build --file Dockerfile.frontend -t nitin03/remotecofrontend:latest .
         docker push nitin03/remotecofrontend:latest
-        cd ..
+    - name: Build & Push Backend Image
+      run: |
+        cd backend
         docker image build --file Dockerfile.backend -t nitin03/remotecobackend:latest .
         docker push nitin03/remotecobackend:latest
