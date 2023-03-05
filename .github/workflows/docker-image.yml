@@ -1,4 +1,4 @@
-name: Remote.co Application
+name: Build Dockerfile
 
 on:
   push:
@@ -16,5 +16,9 @@ jobs:
     - name: Build & Push Image
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "nitin03" --password-stdin
-        docker image build -t nitin03/remoteco:latest .
-        docker push nitin03/remoteco:latest
+        cd frontend
+        docker image build -t nitin03/remotecofrontend:latest .
+        docker push nitin03/remotecofrontend:latest
+        cd ..
+        docker image build -t nitin03/remotecobackend:latest .
+        docker push nitin03/remotecobackend:latest
