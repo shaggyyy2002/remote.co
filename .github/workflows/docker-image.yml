@@ -17,8 +17,8 @@ jobs:
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "nitin03" --password-stdin
         cd frontend
-        docker image build -t nitin03/remotecofrontend:latest .
+        docker image build --file Dockerfile.frontend -t nitin03/remotecofrontend:latest .
         docker push nitin03/remotecofrontend:latest
         cd ..
-        docker image build -t nitin03/remotecobackend:latest .
+        docker image build --file Dockerfile.backend -t nitin03/remotecobackend:latest .
         docker push nitin03/remotecobackend:latest
